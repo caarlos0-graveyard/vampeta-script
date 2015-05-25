@@ -5,5 +5,5 @@ cd "$folder"
 wget -c https://raw.githubusercontent.com/caarlos0/vampeta-script/master/vampeta-script.sh
 chmod +x vampeta-script.sh
 crontab -l > ucrontab
-echo "*/10 * * * * $folder/vampeta-script.sh" >> ucrontab
+echo "*/10 * * * * bash $folder/vampeta-script.sh" >> ucrontab
 crontab ucrontab
