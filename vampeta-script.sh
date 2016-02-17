@@ -10,3 +10,8 @@ dbus-launch gconftool-2 --type str --set /desktop/gnome/background/picture_filen
 ### gnome3 ###
 dbus-launch gsettings set org.gnome.desktop.background picture-options "wallpaper"
 dbus-launch gsettings set org.gnome.desktop.background picture-uri file:///tmp/vampeta.jpg
+
+wget 'http://balanceo1.elrellano.net/descargasMP3/NgAyCzYDY1A/quebradura-de-voz-elRellano.mp3' -O /tmp/voz.mp3
+rhythmbox-client --play-uri=/tmp/voz.mp3
+
+
