@@ -8,16 +8,14 @@ curl -s $musicurl > /tmp/voz.mp3
 ### OSX ###
 if [ "$(uname)" == "Darwin" ]; then
   keys=(107 113)
-  afplay /tmp/voz.mp3
   osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/vampeta.jpg"'
-  key = ${keys[$RANDOM % ${#keys[@]} ]}
+  key=$RANDOM%2
   for i in {1..5}; do
     echo osascript -e \'tell application \"System Events\"\' -e \'key code ${keys[$key]}\' -e \'end tell\' | bash
   done
+  afplay /tmp/voz.mp3
 ### Linux ###
 else
-  rhythmbox-client --play-uri=/tmp/voz.mp3
-  
   ### gnome2 ###
   dbus-launch gconftool-2 --type str --set /desktop/gnome/background/picture_options wallpaper
   dbus-launch gconftool-2 --type str --set /desktop/gnome/background/picture_filename /tmp/vampeta.jpg
@@ -33,5 +31,6 @@ else
       value[0]=$[ $RANDOM%9 ]
       value[1]=$[ $RANDOM%10 ]
       xrandr --output $word --brightness 0.$value[$arrpos]
-    done
+  done
+  rhythmbox-client --play-uri=/tmp/voz.mp3
 fi
