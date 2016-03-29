@@ -9,7 +9,7 @@ curl -s $musicurl > /tmp/voz.mp3
 if [ "$(uname)" == "Darwin" ]; then
   keys=(107 113)
   osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/vampeta.jpg"'
-  key=$RANDOM%2
+  key=$[$RANDOM%2]
   for i in {1..5}; do
     echo osascript -e \'tell application \"System Events\"\' -e \'key code ${keys[$key]}\' -e \'end tell\' | bash
   done
@@ -27,9 +27,9 @@ else
   monitors=$(xrandr -q | grep " connected" | awk '{print $1}')
   for word in $monitors
   do
-      arrpos=$[ $RANDOM % 1]
-      value[0]=$[ $RANDOM%9 ]
-      value[1]=$[ $RANDOM%10 ]
+      arrpos=$[$RANDOM%1]
+      value[0]=$[$RANDOM%9]
+      value[1]=$[$RANDOM%10]
       xrandr --output $word --brightness 0.$value[$arrpos]
   done
   rhythmbox-client --play-uri=/tmp/voz.mp3
